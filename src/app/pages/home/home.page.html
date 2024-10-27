@@ -1,0 +1,22 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title style="text-align: center;">
+      Pergunta sobre {{ pergunta.categoria.nome }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card style="margin-bottom: 10%;" class="perguntas">
+    <ion-card-content>
+      <strong>{{ pergunta.texto }}</strong>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card style="margin: 0 20px 25px 20px;" *ngFor="let respostas of pergunta.respostas; index as i;"
+    [ngClass]="{ 'resposta-selecionada': currentSelected === i}" (click)="selecionarResposta(i)">
+    <ion-card-content>
+      <p>{{ respostas.texto }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
